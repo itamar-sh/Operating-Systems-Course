@@ -1,0 +1,37 @@
+itamar.sh, diamant.merav
+Itamar Shechter (315092759), Merav Diamant (208009456)
+EX: 5
+FILES:
+sockets.cpp
+container.cpp
+Makefile
+
+
+----------------
+Theorethical questions:
+1) Namespaces can help us isolate a process. Because each process with different namespace can see different things, 
+they cant collide names and not easily access to the same resources.
+So, techinacally Namespaces can organize code into logical groups.
+
+2) Mount attaches the filesystem of an external system to the filesystem of a system.
+So, the processes in each of the mount namespace instances will see a single directory hierarchies, different from others.
+This way we make isolation, because each process will have his own filesystem.
+
+3) cgroup (Control Groups) defines what the container can do, permissions. So every process inside the container has the container
+permissions's. This way we can limit the container to have only certain num of processes or usage of CPU or amount of memory.
+
+4) The clone command, help us to create a new process, that later on we can isloate and make him to become a new namespace.
+The big difference between clone command and fork command its that fork keep running with the same code (with different
+return value from the command to be able to tell which process is the father and which is the son), And the clone
+command use a new function to run the code on.
+Note: the cloned process share some parts of its execution context with the calling process, such as the memory space, 
+the table of file descriptors and more.
+
+5) chroot change the root directory of a process.
+so we can make different root for each isolated process. (after mount of new filesystem)
+This way, the isolation of the namespaces can be a real isolation, the process can see only the files he should see, 
+inside his own filesystem.
+
+6) procfs (proc filesystem) help us to present inforamtion about processes.
+for example, we can use procfs to detemined which processes have certain cgroup.
+like we used to attach the container process into this our cgroup.
