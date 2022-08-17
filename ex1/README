@@ -1,0 +1,38 @@
+itamar.sh, diamant.merav
+Itamar Shechter (315092759), Merav Diamant (208009456)
+EX: 1
+
+FILES:
+osm.cpp -- a file with the time runnig code
+Makefile
+Time-Running.png -- image of the time runnig date
+
+Assignment1:
+-----------
+strace command gave us inforamation about all the system calls
+that happened in WhatIDo file.
+we got (after brk(NULL)) 10 systems calls.
+In the overall we concluded that the program make 2 directories
+one inside the other. make one file and write to him.
+after that its getting out the file and delete everything he made.
+
+the first directory with the name "Welcome"
+and inside this the directory "To".
+Those were the first 2 lines with mkdir sys calls.
+
+after that we have "openat" that open if the file is exist
+and make the file in case it not exist. this is our case so
+the program made new file with the name "OS2021".
+
+the 4 line, with the sys call "fstat", check the status of the file. 
+if everything is ok.
+
+the 5 line, with the sys call  "write", write to the file "OS2021"
+a line with the cse user name and suggestion to read the guidelines.
+
+the 6 line, with the sys call  "close", simply close the file.
+the 7 line, with the sys call  "unlink", cut the connection to the file,
+making it safe to delete the directories.
+the 8 line, with the sys call  "rmdir", delete the "To" directory.
+the 9 line, with the sys call  "rmdir", delete the "Welcome" directory.
+the 10 line, with the sys call  "exit_group", terminate the calling process.
