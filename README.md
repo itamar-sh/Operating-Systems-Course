@@ -27,3 +27,13 @@ Barrier (Semaphore) is used to make sure no thread are running before the Sort P
 Atomic counter is used to control handeling the shuffled data.<br/>
 Mutex is used to take care of shared data.<br/>
 The Project is using pthread library to control the threads and use mutexes.
+
+
+## Hits Counter:
+How many times people visit this repository:
+
+[![HitCount](https://hits.dwyl.com/itamar-sh/Operating-Systems-Course.svg?style=flat-square)](http://hits.dwyl.com/itamar-sh/Operating-Systems-Course)
+
+How many unique users visit this repository:
+
+[![HitCount](https://hits.dwyl.com/itamar-sh/Operating-Systems-Course.svg?style=flat-square&show=unique)](http://hits.dwyl.com/itamar-sh/Operating-Systems-Course)
