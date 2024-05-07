@@ -70,7 +70,7 @@ typedef struct thread_struct {
     int sleeping_time;
 } thread_struct;
 
-//global value
+// global values
 signed int cur_thread = 0;
 sigjmp_buf env[MAX_THREAD_NUM+1];
 int QUANTUM_USECS;
