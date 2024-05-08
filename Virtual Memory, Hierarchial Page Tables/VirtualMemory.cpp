@@ -129,7 +129,7 @@ uint64_t findFrame(uint64_t virtualAddress, int cur_depth) {
     }
     uint64_t address_of_page_to_swap_index = findPageToSwap(0, 0,0, virtualAddress);
     int page_to_swap_index  = get_value_of_full_way_address(address_of_page_to_swap_index);
-    PMevict(page_to_swap_index , address_of_page_to_swap_index); //todo not sure
+    PMevict(page_to_swap_index , address_of_page_to_swap_index);
     resetFrame(page_to_swap_index);
     return page_to_swap_index;
 }

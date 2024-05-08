@@ -29,6 +29,22 @@ Mutex is used to take care of shared data.<br/>
 The Project is using pthread library to control the threads and use mutexes.
 
 
+## Virtual Memory, Hierarchial Page Tables
+Virtual memory is a memory-management model that allows processes to use more memory
+than is actually available on the host.<br/>
+We implementeed a virtual memory interface using hierarchical page tables of arbitrary depth using simulated physical memory.<br/>
+The mapping between pages and frames is done using page tables.<br/>
+Hierarchical page tables use a tree of smaller tables to save memory. This effectively separates
+the translation into multiple steps.<br/>
+
+Example Of Hierarchical Page Tables Tree:<br/>
+<img
+  src="Virtual Memory, Hierarchial Page Tables/Example Of Hierarchical page tables Tree.png"
+  title="Example Of Hierarchical Page Tables Tree:"
+  style="display: inline-block; margin: 0 auto;" width="350" height="145"><br/>
+This Project is using vector as RAM, the Availabe Phsical Memory and unordered_map as the hard disk, the Virtual Memory.
+
+
 ## Hits Counter:
 How many times people visit this repository:
 
