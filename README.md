@@ -44,6 +44,29 @@ Example Of Hierarchical Page Tables Tree:<br/>
   style="display: inline-block; margin: 0 auto;" width="350" height="145"><br/>
 This Project is using vector as RAM, the Availabe Phsical Memory and unordered_map as the hard disk, the Virtual Memory.
 
+## Valuable info:
+Three uses of threads:
+- For I/O-bound tasks where the program is waiting for external resources.
+- When you need lightweight concurrent execution without heavy memory overhead.
+- To keep a GUI responsive while performing background tasks.
+Reasons:
+light-weight, not a problem to use same memory space, and in those tasks the program spends a lot of time waiting for external resources.
+- Lightweight Concurrency: Threads are lighter-weight than processes. They share the same memory space, making context switching between threads faster and more efficient compared to processes.
+- Shared Memory: Since threads share the same memory space, they can easily share data without the need for inter-process communication (IPC). This can simplify the design for tasks that need to share data frequently.
+- Reduced Overhead: Creating and managing threads typically incurs less overhead than processes, making them suitable for I/O-bound tasks where the program spends a lot of time waiting for external resources.
+- Efficiency for Network I/O: Web scraping often involves making numerous network requests, which are I/O-bound operations. Threads can handle these requests concurrently without being limited by the GIL, making them efficient for such tasks.
+- Simpler Design: Using threads for web scraping allows you to manage multiple connections within the same memory space, simplifying the design and making it easier to share data between threads.
+- Responsive UI: In GUI applications, using threads for background tasks ensures that the main thread (which handles the user interface) remains responsive. This improves the user experience by preventing the UI from freezing while background tasks are running.
+
+Three uses of processes:
+- For CPU-bound tasks that require heavy computations.
+- When you need true parallelism to take full advantage of multiple CPU cores.
+- For running independent subprocesses that do not share state.
+Reasons:
+1 - True Parallelism because processes allowing multiple CPU cores to be utilized effectively.
+2 - Isolation: Each process runs in its own memory space, preventing memory corruption and other issues that can arise from concurrent access in threads. This isolation makes processes more robust for tasks that require heavy computation and large memory usage.
+3 - Scalability: Processes can handle large datasets by distributing the load across multiple CPU cores, making them ideal for data processing tasks. This scalability can significantly reduce the time required to process large volumes of data.
+4 - Independent Execution: Since each process operates independently, failures or exceptions in one process do not affect others. This is useful for data processing tasks where different data chunks might require different handling.
 
 ## Hits Counter:
 How many times people visit this repository:
