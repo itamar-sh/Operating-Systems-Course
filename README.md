@@ -44,8 +44,22 @@ Example Of Hierarchical Page Tables Tree:<br/>
   style="display: inline-block; margin: 0 auto;" width="350" height="145"><br/>
 This Project is using vector as RAM, the Availabe Phsical Memory and unordered_map as the hard disk, the Virtual Memory.
 
-## Valuable info:
-Three uses of threads:
+## Internet Protocol (IP)
+TCP is Transmission Control Protocol for socket communication between client and server. The string `SOCK_STREAM` in the code:
+` socket(AF_INET, SOCK_STREAM, 0) ` decide which type of protocol it will be. The string ` SOCK_DGRAM ` is for UDP.
+
+TCP requires establishing a connection (Two hands shake) before data is exchanged. Unlike UDP.
+
+We implemented a client-server application that can perform remote command execution over a TCP network connection.
+
+The server listtens for connections on a specified port, while the client connects to the server and sends a command to execute.
+
+The server repeatedly in infinitie loop accents new client connects with get_connection, then read_data and execute the command.
+
+The client uses his own the hostname of his machine, assuming the client and server runs on the same machine, then connects to the server and sends the command argument to the server.
+
+## Q&A:
+**Three uses of threads:**
 - For I/O-bound tasks where the program is waiting for external resources.
 - When you need lightweight concurrent execution without heavy memory overhead.
 - To keep a GUI responsive while performing background tasks.
@@ -58,7 +72,7 @@ light-weight, not a problem to use same memory space, and in those tasks the pro
 - Simpler Design: Using threads for web scraping allows you to manage multiple connections within the same memory space, simplifying the design and making it easier to share data between threads.
 - Responsive UI: In GUI applications, using threads for background tasks ensures that the main thread (which handles the user interface) remains responsive. This improves the user experience by preventing the UI from freezing while background tasks are running.
 
-Three uses of processes:
+**Three uses of processes:**
 - For CPU-bound tasks that require heavy computations.
 - When you need true parallelism to take full advantage of multiple CPU cores.
 - For running independent subprocesses that do not share state.
@@ -67,6 +81,33 @@ Reasons:
 2 - Isolation: Each process runs in its own memory space, preventing memory corruption and other issues that can arise from concurrent access in threads. This isolation makes processes more robust for tasks that require heavy computation and large memory usage.
 3 - Scalability: Processes can handle large datasets by distributing the load across multiple CPU cores, making them ideal for data processing tasks. This scalability can significantly reduce the time required to process large volumes of data.
 4 - Independent Execution: Since each process operates independently, failures or exceptions in one process do not affect others. This is useful for data processing tasks where different data chunks might require different handling.
+
+**What is the family of TCP and UDP is called? what is included in this familiy?**
+Internet Protocol (IP) suite, or more commonly, the TCP/IP protocol suite.
+But the real answer is which layer it is: The Transport Layer (4th) which manages communication and segmentation.
+
+IP is the network layer protocol responsible for addressing and routing packets across networks.
+
+**When TCP is located in the layers models**
+On the OSI (Open Systems Interconnection) model and the TCP/IP model, TCP and UDP are part of the Transport Layer.
+OSI Model:
+
+    Physical Layer - Deals with the physical transmission of data.
+    Data Link Layer - Ensures reliable data transfer between two devices on the same network.
+    Network Layer - Responsible for routing data between devices across different networks (IP).
+    Transport Layer - Manages end-to-end communication, error handling, flow control, and segmentation (e.g., TCP, UDP).
+    Session Layer - Manages sessions or connections between applications.
+    Presentation Layer - Translates data formats, encryption, and compression.
+    Application Layer - Provides network services directly to user applications.
+
+TCP/IP Model:
+
+    Link Layer - Combines OSI's Physical and Data Link layers.
+    Internet Layer - Corresponds to OSI's Network layer, with protocols like IP.
+    Transport Layer - Corresponds to OSI's Transport layer, with protocols like TCP and UDP.
+    Application Layer - Combines OSI's Session, Presentation, and Application layers. HTTP, FTP, DNS.
+
+So, TCP and UDP are Transport Layer protocols, and they are responsible for delivering data between applications on different systems across a network.
 
 ## Hits Counter:
 How many times people visit this repository:

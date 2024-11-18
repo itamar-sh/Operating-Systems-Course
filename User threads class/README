@@ -22,30 +22,30 @@ Second, the Shell send the input to the OS of the Process.
 Then, the OS deliver the signal the process. Using SIGTERM with signal number 15.
 Finally, the process make an interrupt (handle by the OS) to finish the process.
 
-notes: SIGTERM can (not recommended) ignore the request to kill the process. 
+notes: SIGTERM can (not recommended) ignore the request to kill the process.
 The command kill -9 PID will make the OS use SIGKILL that can't be ignored.
 
-Q4: Real time is the time that passed in the "real world", meaning including every run of the CPU 
+Q4: Real time is the time that passed in the "real world", meaning including every run of the CPU
 even the time between thread. (the context switch)
-Virtual time is the time that include only the actual time the process really run on the overall threads 
+Virtual time is the time that include only the actual time the process really run on the overall threads
 without the time to switch between threads.
-So, obviously the example will be a program that have two threads that switch a couple of times between them. 
+So, obviously the example will be a program that have two threads that switch a couple of times between them.
 The virtual time will be only the time the two threads
-run on their code and the real time will be the overall time of the process, 
+run on their code and the real time will be the overall time of the process,
 include the time to switch between the threads and the time they run on their own code.
 
-Q5: sigsetjmp: In general the function saves the calling environment for later use by siglongjmp. 
+Q5: sigsetjmp: In general the function saves the calling environment for later use by siglongjmp.
 So we can save the state of sa thread.
-Gets 2 argument: one is from the type sigjmp_buf that hold inforamtion of PC, SP and 
+Gets 2 argument: one is from the type sigjmp_buf that hold inforamtion of PC, SP and
 all the information needed to restore the info of thread during his running.
 The second argument is flag that if it's not zero the function will save the signal mask of the current thread.
-Return value will be 0 if the sigsetjmp save right now some info about a thread and value not equal to zero 
+Return value will be 0 if the sigsetjmp save right now some info about a thread and value not equal to zero
 if we call the thread to run again with siglongjmp.
 
 siglongjmp:In general it's jump to another thread.
-In particulr the function restores the environment saved by the last invocation of sigsetjmp in the same thread, 
+In particulr the function restores the environment saved by the last invocation of sigsetjmp in the same thread,
 with the matching sigjmp_buf argument.
-The two argument are sigjmp_buf and int that represents the info of the thread to restore 
+The two argument are sigjmp_buf and int that represents the info of the thread to restore
 and the int a value to pass to the invocation of this thread.
-It's not really return value because another thread will run but its almost like returning value 
+It's not really return value because another thread will run but its almost like returning value
 because we passed a value to the next thread. (if val==0 then it will change to 1)/
