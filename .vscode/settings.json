@@ -1,6 +1,13 @@
 {
     "files.associations": {
         "vector": "c",
-        "stdio.h": "c"
-    }
+        "stdio.h": "c",
+        "memory": "c",
+        "optional": "c",
+        "string_view": "c",
+        "string": "c",
+        "system_error": "c",
+        "ranges": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
